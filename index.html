@@ -24,8 +24,10 @@
             id="numDias"
             name="numDias"
             min="1"
-            step="1"
             required
+            inputmode="numeric"
+            pattern="[0-9]*"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
           />
         </div>
         <!-- ?VARIABLE 2 -->
@@ -36,8 +38,10 @@
             id="horasDiarias"
             name="horasDiarias"
             min="1"
-            step="1"
             required
+            inputmode="numeric"
+            pattern="[0-9]*"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
           />
         </div>
         <!-- ?VARIABLE 3 -->
