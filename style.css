@@ -9,7 +9,9 @@
 main {
   font-family: "Montserrat", sans-serif;
   background: rgb(255,227,176);
-  background: radial-gradient(circle, rgba(255,227,176,1) 0%, rgba(238,174,202,1) 35%, rgba(240,194,164,1) 86%, rgba(241,213,140,1) 100%);
+  background: radial-gradient(circle, rgba(255,227,176,1) 0%, rgba(252,184,243,1) 15%, rgba(238,174,202,1) 35%, rgba(240,194,164,1) 79%, rgba(255,209,179,1) 98%);
+  /* background: rgb(255,227,176);
+  background: radial-gradient(circle, rgba(255,227,176,1) 0%, rgba(238,174,202,1) 35%, rgba(240,194,164,1) 86%, rgba(241,213,140,1) 100%); */
   color: #333;
   line-height: 1.6;
   margin: 0;
