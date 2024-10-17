@@ -1,20 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
-<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 
-=======
->>>>>>> e6cef26ef80447c82365e766ce4dd4950ddc15bd
 * {
   margin: 0;
   padding: 0;
 }
 main {
-<<<<<<< HEAD
   font-family: "Montserrat";
-=======
-  font-family: sans-serif;
->>>>>>> e6cef26ef80447c82365e766ce4dd4950ddc15bd
   background: linear-gradient(to bottom right, #ffe6e6, #f7bedb, #ecafb9);
   color: #333;
   line-height: 1.6;
@@ -29,12 +22,9 @@ h1 {
   text-align: center;
   margin-bottom: 30px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
   font-family: "Montserrat";
   text-transform: uppercase;
   font-size: 1.6rem;
-=======
->>>>>>> e6cef26ef80447c82365e766ce4dd4950ddc15bd
 }
 
 form {
