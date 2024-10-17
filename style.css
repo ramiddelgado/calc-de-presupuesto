@@ -7,33 +7,34 @@
   padding: 0;
 }
 main {
-  font-family: "Montserrat";
-  background: linear-gradient(to bottom right, #ffe6e6, #f7bedb, #ecafb9);
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(135deg, #f8e1e8, #f7d1e3, #f5c1de);
   color: #333;
   line-height: 1.6;
   margin: 0;
-  padding: 20px;
-  letter-spacing: 0.25px;
+  padding: 40px 20px;
+  letter-spacing: 0.5px;
   min-height: 100vh;
 }
 
 h1 {
-  color: #88004d;
+  color: #6a0038;
   text-align: center;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-  font-family: "Montserrat";
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
-  font-size: 1.6rem;
+  font-size: 2rem;
+  letter-spacing: 2px;
 }
 
 form {
-  background-color: #f9f0f3;
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 550px;
   margin: 0 auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 label {
@@ -56,24 +57,29 @@ button {
   background-color: #ff69b4;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 12px 24px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
   background-color: #ff1493;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 #resultado {
-  margin-top: 30px;
-  padding: 15px;
-  background-color: #fff0f5;
-  border-radius: 8px;
-  border: 1px solid #ffc0cb;
-  margin-bottom: 30px;
+  margin-top: 40px;
+  padding: 25px;
+  background-color: rgba(255, 240, 245, 0.8);
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
 }
 
 #resultado h2 {
@@ -94,22 +100,33 @@ button:hover {
 }
 
 #header {
-  font-size: 1.2rem;
-  background-image: linear-gradient(to right, #000000, #4b0082);
+  font-size: 1.3rem;
+  background-image: linear-gradient(to right, #4a0e4e, #89216b);
   color: white;
-  font-family: "Roboto";
-  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
   text-align: center;
   margin: 0px;
-  padding: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #footer {
-  font-size: 11px;
+  font-size: 12px;
   text-align: center;
+  margin-top: 30px;
+  color: #666;
 }
 
 input,
 select {
   font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #ff69b4;
+  box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.2);
 }
