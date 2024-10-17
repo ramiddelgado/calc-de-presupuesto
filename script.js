@@ -76,7 +76,10 @@ function calcularCostoZona() {
     case "generalPaz":
     case "alberdi":
     case "barrioJardin":
+<<<<<<< HEAD
     case "centro":
+=======
+>>>>>>> e6cef26ef80447c82365e766ce4dd4950ddc15bd
       costoAdicional = 5000;
       break;
     case "cofico":
