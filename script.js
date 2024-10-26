@@ -1,157 +1,172 @@
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('calcularButton').addEventListener('click', function(event) {
-        event.preventDefault();
-        
-        const numDias = document.getElementById('numDias').value;
-        const horasDiarias = document.getElementById('horasDiarias').value;
-        
-        if (!numDias && !horasDiarias) {
-            alert('Por favor, ingresa la cantidad de días y horas diarias.');
-            return;
-        } else if (!numDias) {
-            alert('Por favor, ingresa la cantidad de días.');
-            return;
-        } else if (!horasDiarias) {
-            alert('Por favor, ingresa la cantidad de horas diarias.');
-            return;
-        }
-        
-        calcularPresupuesto();
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("calcularButton")
+    .addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const numDias = document.getElementById("numDias").value;
+      const horasDiarias = document.getElementById("horasDiarias").value;
+
+      if (!numDias && !horasDiarias) {
+        alert("Ingresa la cantidad de días y horas diarias.");
+        return;
+      } else if (!numDias) {
+        alert("Ingresa la cantidad de días.");
+        return;
+      } else if (!horasDiarias) {
+        alert("Ingresa la cantidad de horas diarias.");
+        return;
+      }
+
+      calcularPresupuesto();
     });
+
+  // ?FUNCION PARA CAMBIAR EL MODO NOCTURNO
+  const darkModeToggle = document.getElementById("darkModeToggle");
+  const body = document.body;
+
+  darkModeToggle.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+    if (body.classList.contains("dark-mode")) {
+      darkModeToggle.textContent = "☀️";
+    } else {
+      darkModeToggle.textContent = "🌙";
+    }
+  });
 });
 
 function calcularPresupuesto() {
-    const numDias = parseInt(document.getElementById('numDias').value);
-    const horasDiarias = parseInt(document.getElementById('horasDiarias').value);
+  const numDias = parseInt(document.getElementById("numDias").value);
+  const horasDiarias = parseInt(document.getElementById("horasDiarias").value);
 
-    if (isNaN(numDias) || isNaN(horasDiarias)) {
-        document.getElementById('resultado').innerHTML = '';
-        return;
-    }
+  if (isNaN(numDias) || isNaN(horasDiarias)) {
+    document.getElementById("resultado").innerHTML = "";
+    return;
+  }
 
-    // Obtener los valores ingresados por el usuario
-    const necesitaUber = document.getElementById("necesitaUber").value;
-    const hayDescuento = document.getElementById("hayDescuento").value;
-    const montoDescuento = document.getElementById("montoDescuento").value;
-    const zona = document.getElementById("zona");
-    const zonaTexto = zona.options[zona.selectedIndex].text;
-    //   const tipoServicio = document.getElementById("tipoServicio").value;
+  // Obtener los valores ingresados por el usuario
+  const necesitaUber = document.getElementById("necesitaUber").value;
+  const hayDescuento = document.getElementById("hayDescuento").value;
+  const montoDescuento = document.getElementById("montoDescuento").value;
+  const zona = document.getElementById("zona");
+  const zonaTexto = zona.options[zona.selectedIndex].text;
+  //   const tipoServicio = document.getElementById("tipoServicio").value;
 
-    // Definir las tarifas base
-    let tarifaBase = 0;
-    let tarifaPorHora = 7000;
-    //   let multiplicadorServicio = 1; // Multiplicador por defecto para servicio básico
+  // Definir las tarifas base
+  let tarifaBase = 0;
+  let tarifaPorHora = 7000;
+  //   let multiplicadorServicio = 1; // Multiplicador por defecto para servicio básico
 
-    // Ajustar el multiplicador según el tipo de servicio seleccionado
-    //   switch (tipoServicio) {
-    //     case "estandar":
-    //       multiplicadorServicio = 1.2; // 20% más que el servicio básico
-    //       break;
-    //     case "premium":
-    //       multiplicadorServicio = 1.5; // 50% más que el servicio básico
-    //       break;
-    //   }
+  // Ajustar el multiplicador según el tipo de servicio seleccionado
+  //   switch (tipoServicio) {
+  //     case "estandar":
+  //       multiplicadorServicio = 1.2; // 20% más que el servicio básico
+  //       break;
+  //     case "premium":
+  //       multiplicadorServicio = 1.5; // 50% más que el servicio básico
+  //       break;
+  //   }
 
-    // Calcular el costo base
-    let costoBase = tarifaBase + tarifaPorHora * horasDiarias;
+  // Calcular el costo base
+  let costoBase = tarifaBase + tarifaPorHora * horasDiarias;
 
-    // Multiplicar por el número de días
-    let costoTotal = costoBase * numDias;
+  // Multiplicar por el número de días
+  let costoTotal = costoBase * numDias;
 
-    // Agregar costo adicional si necesita Uber
-    if (necesitaUber === "si") {
-        costoTotal += calcularCostoZona() * numDias;
-    }
+  // Agregar costo adicional si necesita Uber
+  if (necesitaUber === "si") {
+    costoTotal += calcularCostoZona() * numDias;
+  }
 
-    // Agregar descuento si hay descuento
-    if (hayDescuento === "si") {
-        costoTotal -= costoTotal * calcularDescuento();
-    }
+  // Agregar descuento si hay descuento
+  if (hayDescuento === "si") {
+    costoTotal -= costoTotal * calcularDescuento();
+  }
 
-    // Mostrar el resultado en el HTML
-    let zonaInfo =
-        necesitaUber === "si" ? ` en la zona de <strong>${zonaTexto}</strong>` : "";
-    let descuentoInfo =
-        hayDescuento === "si"
-            ? ` con un descuento del <strong>${montoDescuento}%</strong>`
-            : "";
+  // Mostrar el resultado en el HTML
+  let zonaInfo =
+    necesitaUber === "si" ? ` en la zona de <strong>${zonaTexto}</strong>` : "";
+  let descuentoInfo =
+    hayDescuento === "si"
+      ? ` con un descuento del <strong>${montoDescuento}%</strong>`
+      : "";
 
-    document.getElementById("resultado").innerHTML = `
+  document.getElementById("resultado").innerHTML = `
             <h2>Presupuesto Estimado</h2>
             <p>El costo total por <strong>${horasDiarias} hora(s) diaria(s)</strong> durante <strong>${numDias} día(s)</strong>${descuentoInfo}${zonaInfo} es: $<strong>${costoTotal.toFixed(
-        0
-    )}.</strong></p>
+    0
+  )}.</strong></p>
         `;
 }
 
 // ?FUNCION PARA MOSTRAR LA ZONA
 function mostrarZona() {
-    let necesitaUber = document.getElementById("necesitaUber");
-    let zonaDiv = document.getElementById("zonaDiv");
-    if (necesitaUber.value === "si") {
-        zonaDiv.style.display = "block";
-    } else {
-        zonaDiv.style.display = "none";
-    }
+  let necesitaUber = document.getElementById("necesitaUber");
+  let zonaDiv = document.getElementById("zonaDiv");
+  if (necesitaUber.value === "si") {
+    zonaDiv.style.display = "block";
+  } else {
+    zonaDiv.style.display = "none";
+  }
 }
 
 // ?FUNCION PARA MOSTRAR LA ZONA Y CALCULAR COSTO ADICIONAL
 function calcularCostoZona() {
-    let zona = document.getElementById("zona").value;
-    let costoAdicional = 0;
+  let zona = document.getElementById("zona").value;
+  let costoAdicional = 0;
 
-    switch (zona) {
-        case "generalPaz":
-        case "alberdi":
-        case "barrioJardin":
-        case "centro":
-            costoAdicional = 5000;
-            break;
-        case "cofico":
-            costoAdicional = 6000;
-            break;
-        case "cerroLasRosas":
-        case "otro":
-            costoAdicional = 8000;
-            break;
-    }
+  switch (zona) {
+    case "generalPaz":
+    case "alberdi":
+    case "barrioJardin":
+    case "centro":
+      costoAdicional = 5000;
+      break;
+    case "cofico":
+      costoAdicional = 6000;
+      break;
+    case "cerroLasRosas":
+    case "otro":
+      costoAdicional = 8000;
+      break;
+  }
 
-    return costoAdicional;
+  return costoAdicional;
 }
 
 // Función para calcular el descuento
 function calcularDescuento() {
-    let montoDescuento = document.getElementById("montoDescuento").value;
-    let descuento = 0;
+  let montoDescuento = document.getElementById("montoDescuento").value;
+  let descuento = 0;
 
-    switch (montoDescuento) {
-        case "5":
-            descuento = 0.05;
-            break;
-        case "10":
-            descuento = 0.1;
-            break;
-        case "15":
-            descuento = 0.15;
-            break;
-        case "20":
-            descuento = 0.2;
-            break;
-        case "25":
-            descuento = 0.25;
-            break;
-    }
+  switch (montoDescuento) {
+    case "5":
+      descuento = 0.05;
+      break;
+    case "10":
+      descuento = 0.1;
+      break;
+    case "15":
+      descuento = 0.15;
+      break;
+    case "20":
+      descuento = 0.2;
+      break;
+    case "25":
+      descuento = 0.25;
+      break;
+  }
 
-    return descuento;
+  return descuento;
 }
 
 // ?FUNCION PARA MOSTRAR EL MONTO DE DESCUENTO
 function mostrarMontoDescuento() {
-    let hayDescuento = document.getElementById("hayDescuento");
-    let montoDescuentoDiv = document.getElementById("montoDescuentoDiv");
-    if (hayDescuento.value === "si") {
-        montoDescuentoDiv.style.display = "block";
-    } else {
-        montoDescuentoDiv.style.display = "none";
-    }
+  let hayDescuento = document.getElementById("hayDescuento");
+  let montoDescuentoDiv = document.getElementById("montoDescuentoDiv");
+  if (hayDescuento.value === "si") {
+    montoDescuentoDiv.style.display = "block";
+  } else {
+    montoDescuentoDiv.style.display = "none";
+  }
 }

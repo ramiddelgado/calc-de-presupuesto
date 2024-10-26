@@ -1,15 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
 
 * {
   margin: 0;
   padding: 0;
 }
+
 main {
   font-family: "Montserrat", sans-serif;
-  background: rgb(255,227,176);
-  background: radial-gradient(circle, rgba(255,227,176,1) 0%, rgba(252,184,243,1) 0%, rgba(238,174,202,1) 35%, rgba(240,194,164,1) 100%);
+  background: rgb(255, 227, 176);
+  background: radial-gradient(
+    circle,
+    rgba(255, 227, 176, 1) 0%,
+    rgba(252, 184, 243, 1) 0%,
+    rgba(238, 174, 202, 1) 35%,
+    rgba(240, 194, 164, 1) 100%
+  );
   /* background: rgb(255,227,176);
   background: radial-gradient(circle, rgba(255,227,176,1) 0%, rgba(238,174,202,1) 35%, rgba(240,194,164,1) 86%, rgba(241,213,140,1) 100%); */
   color: #333;
@@ -27,15 +34,30 @@ h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
-  font-size: 1.8rem;
+  font-size: 1.25em;
   letter-spacing: 3px;
   font-weight: 700;
   background: linear-gradient(45deg, #4a0038, #d4006a);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   padding: 10px;
   padding-bottom: 20px;
   border-bottom: 1px solid #d4006a86;
+
+  /* Modificamos la animación para un efecto de aparición gradual */
+  animation: fadeIn 4s ease-out forwards; /* Añadimos 'forwards' */
+  opacity: 0; /* Inicialmente invisible */
+}
+
+/* Nueva regla @keyframes para la animación de aparición gradual */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 form {
@@ -116,7 +138,7 @@ button:hover {
 
 #header {
   font-size: 1.3rem;
-  background-image: linear-gradient(to right, #4a0e4e, #89216b);
+  background-image: linear-gradient(to right, #320736, #b03a8f);
   color: white;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -124,6 +146,9 @@ button:hover {
   margin: 0px;
   padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #footer {
@@ -145,4 +170,87 @@ select:focus {
   border-color: #ff69b4;
   box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.2);
   background-color: rgba(255, 255, 255, 0.9);
+}
+
+/*? DARK MODE */
+
+#darkModeToggle {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  margin: unset;
+}
+
+#darkModeToggle:hover {
+  background-color: rgba(9, 9, 9, 0.5);
+  color: #362707;
+}
+
+body.dark-mode {
+  background: radial-gradient(
+    circle,
+    rgba(40, 40, 40, 1) 0%,
+    rgba(20, 20, 20, 1) 65%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  color: #f0f0f0;
+}
+
+body.dark-mode main {
+  background: radial-gradient(
+    circle,
+    rgba(40, 40, 40, 1) 20%,
+    rgba(20, 20, 20, 1) 65%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  color: #f0f0f0;
+}
+
+body.dark-mode h1 {
+  color: #ffe4b5;
+  background: linear-gradient(45deg, #f8debc, #f37d00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 1px solid #ffb52b86;
+}
+
+body.dark-mode form {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode label {
+  color: #ffa72b;
+}
+
+body.dark-mode input[type="number"],
+body.dark-mode select {
+  background-color: rgba(0, 0, 0, 0.65);
+  color: #f0f0f0;
+  border-color: #7c5e27;
+}
+
+body.dark-mode button {
+  background-color: #ef8e0f;
+}
+
+body.dark-mode button:hover {
+  background-color: #ffb811;
+}
+
+body.dark-mode #resultado {
+  background-color: rgba(50, 50, 50, 0.3);
+}
+
+body.dark-mode #resultado h2 {
+  color: #ffae2b;
+}
+
+body.dark-mode #header {
+  background-image: linear-gradient(to right, #2e2815, #ca8e03);
 }
